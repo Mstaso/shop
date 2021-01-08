@@ -1,38 +1,126 @@
-.App {
+
+
+body {
+  background-color: #e0e0e0;
+}
+
+
+/* Search CSS */
+
+.search-container {
+  width: 1000px;
+  height: 80px;
+  background-color: white;
+}
+.search-bar {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+
+.row {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+input {
+  margin-top: 5px;
+  display: block;
+  width: 100%;
+  padding: 5px;
+  text-indent: 30px;
+}
+
+label {
+  margin-top: 15px;
+  display:inline-block;
+  
+}
+
+.search-btn {
+  position: relative;
+  bottom: 25px;
+  background-color: transparent;
+  border: 0;
+}
+
+
+
+
+
+
+
+
+
+
+/* 
+body {
+  background: whitesmoke;
+}
+
+.search-bar {
+background: pink;
+position: relative;
+
+
+}
+
+.search-bar__input {
+  border: 3px solid orange;
+  height: 40px;
+  width: 300px;
+  border-radius: 100vh;
+  padding: 0px 10px;
+  text-indent: 40px;
+  
+
+}
+
+.search-bar__input::placeholder{
+  position: relative;
+  left: 10px;
+}
+
+.search-bar__input:focus {
+  outline: none;
+}
+
+.search-btn {
+
+background: transparent;
+border: none;
+position: relative;
+right: 310px;  
+}
+
+
+.Movie-Container {
+  position: relative;
+  top: 20px;
+  margin-right: 20px;
+  margin-left: 20px;
+  width: 30%;
+  height: auto;
+  padding: 10px;
   text-align: center;
+  background: white;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.Nomination-Container {
+  position: relative;
+  top: 20px;
+  margin-right: 20px;
+  margin-left: 20px;
+  width: 30%;
+  height: auto;
+  padding: 10px;
+  text-align: center;
+  background: white;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.center {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+} */
