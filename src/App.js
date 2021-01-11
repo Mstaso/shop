@@ -52,9 +52,11 @@ this.setState({nominations: updatedNominations})
   render() {
     return (
       <div className="App">
+        <div class="row">
         <h2>The Shoppies</h2>
+        </div>
         <Search searchValue={this.state.searchValue} changeHandler={this.changeHandler}/>
-        <div className="center">
+        <div class="row">
         <MovieContainer searchValue={this.state.searchValue} nominationHandler={this.nominationHandler} movies={this.state.movies}/>
         <NominationContainer removeFromNomination={this.removeFromNomination} nominations={this.state.nominations} />
         </div>

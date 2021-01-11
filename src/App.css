@@ -8,9 +8,10 @@ body {
 /* Search CSS */
 
 .search-container {
-  width: 1000px;
+  width: 1200px;
   height: 80px;
   background-color: white;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
 }
 .search-bar {
   margin-left: 5%;
@@ -21,6 +22,19 @@ body {
 .row {
   max-width: 1140px;
   margin: 0 auto;
+}
+
+.col {
+	display: block;
+	float:left;
+  margin: 1% 0 1% 1.6%;
+  text-align: center;
+  background-color: white;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.span-1-of-2 {
+	width: 49.2%;
 }
 
 input {
@@ -44,6 +58,15 @@ label {
   border: 0;
 }
 
+.movie-container {
+
+
+
+}
+
+.nomination-container {
+
+}
 
 
 
