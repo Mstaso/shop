@@ -13,6 +13,15 @@ class App extends React.Component {
     searchValue: ''
   }
 
+  componentDidMount() {
+    const nominations = localStorage.getItem("nominations")
+    if(nominations) {
+      this.setState({
+        nominations: nominations
+      })
+    }
+  }
+
   changeHandler = (e) => {
     this.setState({ searchValue: e.target.value });
     this.fetchMovies(this.state.searchValue)
@@ -22,7 +31,6 @@ fetchMovies = (searchValue) => {
     fetch(`http://www.omdbapi.com/?i=tt3896198&apikey=a682864d&s=${searchValue}`)
     .then(resp => resp.json())
     .then(movieData => {
-        console.log(movieData)
         if (movieData.Response) {
             this.renderMovies(movieData);
         }
@@ -38,29 +46,62 @@ renderMovies = (movieArray) => {
   }
 }
 
-nominationHandler = (movie) => {
-let newNominations = [movie,...this.state.nominations]
-this.setState({nominations: newNominations})
-
+nominationHandler = (nominatedMovie) => {  
+let newNominations = [nominatedMovie,...this.state.nominations]
+let updatedMovieList = this.state.movies.filter(movie => movie !== nominatedMovie)
+this.setState({
+  nominations: newNominations,
+  movies: updatedMovieList
+})
+localStorage.setItem('nominations', newNominations)
+console.log(localStorage)
 }
 
 removeFromNomination = (movie) => {
-let updatedNominations = this.state.nominations.filter(nomination => nomination.Title !== movie.Title)
+let updatedNominations = this.state.nominations.filter(nomination => nomination !== movie)
 this.setState({nominations: updatedNominations})
+}
+
+nominationTitles = () => {
+  return this.state.nominations.map(nomination => <li>{nomination.Title}</li>)
+}
+
+bannerHandler = () => {
+  this.setState({
+    nominations: [],
+    movies: [],
+    searchValue: ''
+  })
 }
 
   render() {
     return (
-      <div className="App">
+    <div className="App">
         <div class="row">
-        <h2>The Shoppies</h2>
+        <h1>The Shoppies</h1>
+        <ion-icon name="paper-plane-outline" class="paper-plane-icon"></ion-icon>
         </div>
         <Search searchValue={this.state.searchValue} changeHandler={this.changeHandler}/>
         <div class="row">
         <MovieContainer searchValue={this.state.searchValue} nominationHandler={this.nominationHandler} movies={this.state.movies}/>
         <NominationContainer removeFromNomination={this.removeFromNomination} nominations={this.state.nominations} />
+        {this.state.nominations.length >= 5 ?
+        <div id="overlay">
+          <div class="banner">
+            <h2>Thank you for your nominations</h2>
+            <ul>
+              {this.nominationTitles()}
+            </ul>
+            <ion-icon onClick={this.bannerHandler}class="x-icon" name="close-outline"></ion-icon>
+          </div>
+        </div>
+          :
+        <div></div>  
+        }
         </div>
       </div>
+  
+    
     );
   }
   

@@ -4,7 +4,7 @@ class Search extends React.Component{
 
     render() {
         return(
-            <div class="search-container row">
+            <div class="search-container">
                 <div class="search-bar">
                         <script src="https://use.fontawesome.com/3dfa0b83df.js"></script>
                         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
