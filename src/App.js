@@ -14,18 +14,18 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    const storedNominations = JSON.parse(localStorage.getItem("nominations"))
+    const storedNominations = JSON.parse(localStorage.getItem("nominations"));
     if(storedNominations) {
       this.setState({
         nominations: storedNominations
-      })
-    }
+      });
+    };
     
   }
 
   searchHandler = (e) => {
     this.setState({ searchValue: e.target.value });
-    this.fetchMovies(this.state.searchValue)
+    this.fetchMovies(this.state.searchValue);
 }
 
 fetchMovies = (searchValue) => {
@@ -36,35 +36,31 @@ fetchMovies = (searchValue) => {
             this.renderMovies(movieData);
         }
         
-        })    
+        });    
 }
 
 renderMovies = (movieArray) => {
-  if (!movieArray.Search) {
-  this.setState({movies: []});
-  } else {
-    this.setState({movies: movieArray.Search})
-  }
+  !movieArray.Search ? this.setState({movies: []}) :  this.setState({movies: movieArray.Search}); 
 }
 
 nominationHandler = (nominatedMovie) => {  
-let newNominations = [nominatedMovie,...this.state.nominations]
-let updatedMovieList = this.state.movies.filter(movie => movie !== nominatedMovie)
+let newNominations = [nominatedMovie,...this.state.nominations];
+let updatedMovieList = this.state.movies.filter(movie => movie !== nominatedMovie);
 this.setState({
   nominations: newNominations,
   movies: updatedMovieList
-})
-localStorage.setItem('nominations', JSON.stringify(newNominations))
+});
+localStorage.setItem('nominations', JSON.stringify(newNominations));
 }
 
 removeFromNomination = (movie) => {
-let updatedNominations = this.state.nominations.filter(nomination => nomination !== movie)
-this.setState({nominations: updatedNominations})
-localStorage.setItem('nominations', JSON.stringify(updatedNominations))
+let updatedNominations = this.state.nominations.filter(nomination => nomination !== movie);
+this.setState({nominations: updatedNominations});
+localStorage.setItem('nominations', JSON.stringify(updatedNominations));
 }
 
 nominationTitles = () => {
-  return this.state.nominations.map(nomination => <li>{nomination.Title}</li>)
+  return this.state.nominations.map(nomination => <li>{nomination.Title}</li>);
 }
 
 bannerHandler = () => {
@@ -72,7 +68,7 @@ bannerHandler = () => {
     nominations: [],
     movies: [],
     searchValue: ''
-  })
+  });
   localStorage.removeItem('nominations');
 }
 

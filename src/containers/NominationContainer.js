@@ -7,13 +7,11 @@ function NominationContainer(props) {
     props.nominations.length >= 1 ?
     nominationsToRender = props.nominations.map(movie => <Movie movie={movie} nominationHandler={props.nominationHandler} key={movie.imdbID} removeFromNomination={props.removeFromNomination} />)
     :
-    nominationsToRender = []
+    nominationsToRender = [];
     return (
-        <div class="col span-1-of-2">
-            <div class="nomination-container">
+        <div class="col span-1-of-2">    
             <h2>Nominations</h2>
             {nominationsToRender}
-            </div>
         </div>
     )
 }

@@ -2,13 +2,12 @@ import React from 'react'
 
 class Movie extends React.Component {
 
-    clickHandler = (e) => {
+    clickHandler = () => {
         if(this.props.nominationHandler) {
-            this.props.nominationHandler(this.props.movie)
+            this.props.nominationHandler(this.props.movie);
         } else {
-            this.props.removeFromNomination(this.props.movie)
+            this.props.removeFromNomination(this.props.movie);
         }
-       
     }
     
     render() {
