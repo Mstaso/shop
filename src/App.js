@@ -14,15 +14,16 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    const nominations = localStorage.getItem("nominations")
-    if(nominations) {
+    const storedNominations = JSON.parse(localStorage.getItem("nominations"))
+    if(storedNominations) {
       this.setState({
-        nominations: nominations
+        nominations: storedNominations
       })
     }
+    
   }
 
-  changeHandler = (e) => {
+  searchHandler = (e) => {
     this.setState({ searchValue: e.target.value });
     this.fetchMovies(this.state.searchValue)
 }
@@ -53,13 +54,13 @@ this.setState({
   nominations: newNominations,
   movies: updatedMovieList
 })
-localStorage.setItem('nominations', newNominations)
-console.log(localStorage)
+localStorage.setItem('nominations', JSON.stringify(newNominations))
 }
 
 removeFromNomination = (movie) => {
 let updatedNominations = this.state.nominations.filter(nomination => nomination !== movie)
 this.setState({nominations: updatedNominations})
+localStorage.setItem('nominations', JSON.stringify(updatedNominations))
 }
 
 nominationTitles = () => {
@@ -72,6 +73,7 @@ bannerHandler = () => {
     movies: [],
     searchValue: ''
   })
+  localStorage.removeItem('nominations');
 }
 
   render() {
@@ -81,7 +83,7 @@ bannerHandler = () => {
         <h1>The Shoppies</h1>
         <ion-icon name="paper-plane-outline" class="paper-plane-icon"></ion-icon>
         </div>
-        <Search searchValue={this.state.searchValue} changeHandler={this.changeHandler}/>
+        <Search searchValue={this.state.searchValue} searchHandler={this.searchHandler}/>
         <div class="row">
         <MovieContainer searchValue={this.state.searchValue} nominationHandler={this.nominationHandler} movies={this.state.movies}/>
         <NominationContainer removeFromNomination={this.removeFromNomination} nominations={this.state.nominations} />

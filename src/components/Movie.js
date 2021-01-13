@@ -5,7 +5,6 @@ class Movie extends React.Component {
     clickHandler = (e) => {
         if(this.props.nominationHandler) {
             this.props.nominationHandler(this.props.movie)
-            e.target.disabled = true;
         } else {
             this.props.removeFromNomination(this.props.movie)
         }
